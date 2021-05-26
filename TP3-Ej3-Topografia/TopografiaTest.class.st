@@ -11,25 +11,21 @@ Class {
 
 { #category : #running }
 TopografiaTest >> setUp [
-	"Hooks that subclasses may override to define the fixture of test."
-	
 	super setUp.
 	
-	unAgua := Agua new.
-	unaTierra := Tierra new.
+	unAgua := Topografia agua.
+	unaTierra := Topografia tierra.
 	
-	unaMixta := Topografia topografia1: unAgua topografia2: unAgua 
-		topografia3: unAgua topografia4: unaTierra
+	unaMixta := Topografia mixtaCon: { unAgua. unAgua. unAgua. unaTierra }.
 ]
 
 { #category : #tests }
 TopografiaTest >> testEquality [ 
 
-	self assert: ( unAgua ) equals: ( Agua new ).
-	self assert: ( unaTierra ) equals: ( Tierra new ).
+	self assert: ( unAgua ) equals: ( Topografia agua ).
+	self assert: ( unaTierra ) equals: ( Topografia tierra ).
 	
-	self assert: ( unaMixta ) equals: ( Topografia topografia1: unAgua topografia2: unAgua 
-		topografia3: unAgua topografia4: unaTierra ).
+	self assert: ( unaMixta ) equals: ( Topografia mixtaCon: {unAgua. unAgua. unAgua. unaTierra} ).
 	
 	self deny: ( unaTierra ) equals: ( unAgua ).
 	self deny: ( unaTierra ) equals: ( unaMixta ).
@@ -48,7 +44,7 @@ TopografiaTest >> testProporcionDeAguaProporcionDeTierra [
 	self assert: ( unaMixta proporcionDeAgua ) equals: (0.75).
 	self assert: ( unaMixta proporcionDeTierra ) equals: (0.25).
 	
-	unaMixta := Topografia topografia1: unAgua topografia2: unAgua topografia3: unaTierra topografia4: unaMixta.
+	unaMixta := Topografia mixtaCon: {unAgua. unAgua. unaTierra. unaMixta}.
 	
 	self assert: ( unaMixta proporcionDeAgua ) equals: (0.6875).
 	self assert: ( unaMixta proporcionDeTierra  ) equals: (0.3125)

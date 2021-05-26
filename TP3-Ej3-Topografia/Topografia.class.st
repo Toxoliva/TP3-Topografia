@@ -10,9 +10,18 @@ Class {
 }
 
 { #category : #'instance creation' }
-Topografia class >> topografia1: tp1 topografia2: tp2 topografia3: tp3 topografia4: tp4 [
+Topografia class >> agua [
+	^ Agua new
+]
 
- ^( TopografiaMixta new topografia1: tp1 topografia2: tp2 topografia3: tp3 topografia4: tp4 )
+{ #category : #'instance creation' }
+Topografia class >> mixtaCon: coleccionDeTopografias [
+	^ TopografiaMixta new initialize: coleccionDeTopografias
+]
+
+{ #category : #'instance creation' }
+Topografia class >> tierra [
+	^ Tierra new
 ]
 
 { #category : #comparing }
