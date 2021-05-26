@@ -26,10 +26,9 @@ Topografia class >> tierra [
 
 { #category : #comparing }
 Topografia >> = aTopografia [
-
- ^( self proporcionDeAgua = aTopografia proporcionDeAgua ) & 
-		( self proporcionDeTierra  = aTopografia proporcionDeTierra ) &
-				( self distribucion = aTopografia distribucion )
+	^ self proporcionDeAgua = aTopografia proporcionDeAgua
+		& (self proporcionDeTierra = aTopografia proporcionDeTierra)
+		& (self distribucion = aTopografia distribucion)
 ]
 
 { #category : #'private - accessing' }
