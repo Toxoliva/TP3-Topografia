@@ -1,5 +1,5 @@
 "
-Mixta
+Topografia mixta <<Composite Composite>>
 "
 Class {
 	#name : #TopografiaMixta,
@@ -14,24 +14,23 @@ Class {
 }
 
 { #category : #'private - accessing' }
-TopografiaMixta >> distribucion [ 
-
-	^( '{ ', topografia1 distribucion, ' ', topografia2 distribucion, ' ', 
-			topografia3 distribucion, ' ', topografia4 distribucion, ' }' )
+TopografiaMixta >> distribucion [
+	^ '{ ' , topografia1 distribucion , ' ' , topografia2 distribucion
+		, ' ' , topografia3 distribucion , ' ' , topografia4 distribucion
+		, ' }'
 ]
 
 { #category : #accesing }
-TopografiaMixta >> proporcionDeAgua [ 
-
-	^( topografia1 proporcionDeAgua + topografia2 proporcionDeAgua + 
-			topografia3 proporcionDeAgua + topografia4 proporcionDeAgua ) / 4
+TopografiaMixta >> proporcionDeAgua [
+	^ (topografia1 proporcionDeAgua + topografia2 proporcionDeAgua
+		+ topografia3 proporcionDeAgua + topografia4 proporcionDeAgua) / 4
 ]
 
 { #category : #accesing }
 TopografiaMixta >> proporcionDeTierra [
-
-	^( topografia1 proporcionDeTierra + topografia2 proporcionDeTierra + 
-			topografia3 proporcionDeTierra + topografia4 proporcionDeTierra ) / 4
+	^ (topografia1 proporcionDeTierra + topografia2 proporcionDeTierra
+		+ topografia3 proporcionDeTierra + topografia4 proporcionDeTierra)
+		/ 4
 ]
 
 { #category : #'private - initialization' }

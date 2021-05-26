@@ -15,8 +15,8 @@ TopografiaTest >> setUp [
 	
 	super setUp.
 	
-	unAgua := Topografia agua.
-	unaTierra := Topografia tierra.
+	unAgua := Agua new.
+	unaTierra := Tierra new.
 	
 	unaMixta := Topografia topografia1: unAgua topografia2: unAgua 
 		topografia3: unAgua topografia4: unaTierra
@@ -25,8 +25,8 @@ TopografiaTest >> setUp [
 { #category : #tests }
 TopografiaTest >> testEquality [ 
 
-	self assert: ( unAgua ) equals: ( Topografia agua ).
-	self assert: ( unaTierra ) equals: ( Topografia tierra ).
+	self assert: ( unAgua ) equals: ( Agua new ).
+	self assert: ( unaTierra ) equals: ( Tierra new ).
 	
 	self assert: ( unaMixta ) equals: ( Topografia topografia1: unAgua topografia2: unAgua 
 		topografia3: unAgua topografia4: unaTierra ).

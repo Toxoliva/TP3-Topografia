@@ -1,24 +1,13 @@
 "
-Clase que reprecenta una extencion de tierra o agua, en distintas cantidades.
+Topografia representa la distribucion de agua y tierra de una region cuadrada, la cual esta formada por porciones de “agua” y de “tierra”.
 Las proporciones siempre estan entre 0 y 1.
+<<Component Composite>>
 "
 Class {
 	#name : #Topografia,
 	#superclass : #Object,
 	#category : #'TP3-Ej3-Topografia-Model'
 }
-
-{ #category : #'instance creation' }
-Topografia class >> agua [
-
- ^( TopografiaBasica new proporcionDeAgua: 1 proporcionDeTierra: 0 )
-]
-
-{ #category : #'instance creation' }
-Topografia class >> tierra [
-
- ^( TopografiaBasica new proporcionDeAgua: 0 proporcionDeTierra: 1 )
-]
 
 { #category : #'instance creation' }
 Topografia class >> topografia1: tp1 topografia2: tp2 topografia3: tp3 topografia4: tp4 [
@@ -35,19 +24,16 @@ Topografia >> = aTopografia [
 ]
 
 { #category : #'private - accessing' }
-Topografia >> distribucion [ 
-
-	^SubclassResponsibility 	
+Topografia >> distribucion [
+	^ self subclassResponsibility
 ]
 
 { #category : #accesing }
-Topografia >> proporcionDeAgua [ 
-
-	^SubclassResponsibility 
+Topografia >> proporcionDeAgua [
+	^ self subclassResponsibility
 ]
 
 { #category : #accesing }
 Topografia >> proporcionDeTierra [
-
-	^SubclassResponsibility 
+	^ self subclassResponsibility
 ]
