@@ -16,6 +16,7 @@ Topografia class >> agua [
 
 { #category : #'instance creation' }
 Topografia class >> mixtaCon: coleccionDeTopografias [
+	"Una OrderedCollecition de tamaño 4, con 4 topografias"
 	^ TopografiaMixta new initialize: coleccionDeTopografias
 ]
 

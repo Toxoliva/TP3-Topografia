@@ -12,9 +12,9 @@ Class {
 
 { #category : #'private - accessing' }
 TopografiaSimple >> distribucion [
-	"Devuelve un codigo que representa si es tierra o agua"
+	"Devuelve un string que representa si es tierra (0) o agua (1)"
 
-	^ self proporcionDeAgua asString , self proporcionDeTierra asString
+	^ self proporcionDeAgua asString
 ]
 
 { #category : #accesing }
