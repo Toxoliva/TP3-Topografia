@@ -11,7 +11,7 @@ Class {
 
 { #category : #'instance creation' }
 Topografia class >> agua [
-	^ Agua new
+	^ TopografiaSimple new proporcionDeAgua: 1
 ]
 
 { #category : #'instance creation' }
@@ -21,7 +21,7 @@ Topografia class >> mixtaCon: coleccionDeTopografias [
 
 { #category : #'instance creation' }
 Topografia class >> tierra [
-	^ Tierra new
+	^ TopografiaSimple new proporcionDeAgua: 0
 ]
 
 { #category : #comparing }
@@ -33,6 +33,8 @@ Topografia >> = aTopografia [
 
 { #category : #'private - accessing' }
 Topografia >> distribucion [
+	"Devuelve una representacion en String del receptor que es unica dependiendo de la estructura del receptor."
+
 	^ self subclassResponsibility
 ]
 

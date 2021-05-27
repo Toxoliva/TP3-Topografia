@@ -4,6 +4,9 @@ Topografia simple <<Leaf Composite>>
 Class {
 	#name : #TopografiaSimple,
 	#superclass : #Topografia,
+	#instVars : [
+		'proporcionDeAgua'
+	],
 	#category : #'TP3-Ej3-Topografia-Model'
 }
 
@@ -16,10 +19,20 @@ TopografiaSimple >> distribucion [
 
 { #category : #accesing }
 TopografiaSimple >> proporcionDeAgua [
-	^ 0
+	^ proporcionDeAgua
+]
+
+{ #category : #accesing }
+TopografiaSimple >> proporcionDeAgua: aNumber [
+	proporcionDeAgua := aNumber
 ]
 
 { #category : #accesing }
 TopografiaSimple >> proporcionDeTierra [
-	^ 0
+	" 
+	agua 1 xor 1 = 0
+   agua 0 xor 1 = 1 
+	"
+
+	^ proporcionDeAgua bitXor: 1
 ]

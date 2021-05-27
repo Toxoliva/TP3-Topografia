@@ -21,7 +21,7 @@ TopografiaTest >> setUp [
 
 { #category : #tests }
 TopografiaTest >> testEquality [ 
-
+   | espejada1 espejada2 |
 	self assert: ( unAgua ) equals: ( Topografia agua ).
 	self assert: ( unaTierra ) equals: ( Topografia tierra ).
 	
@@ -30,6 +30,10 @@ TopografiaTest >> testEquality [
 	self deny: ( unaTierra ) equals: ( unAgua ).
 	self deny: ( unaTierra ) equals: ( unaMixta ).
 	self deny: ( unAgua ) equals: ( unaMixta ).
+	
+	espejada1 := Topografia mixtaCon: { unaTierra. unAgua. unaTierra. unAgua }.
+	espejada2 := Topografia mixtaCon: { unAgua. unaTierra. unAgua. unaTierra }.
+	self deny: ( espejada1 ) equals: ( espejada2 ).
 	
 	
 ]
