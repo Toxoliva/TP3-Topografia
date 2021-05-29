@@ -15,12 +15,12 @@ Topografia class >> agua [
 ]
 
 { #category : #'instance creation' }
-Topografia class >> mixtaCon: coleccionDeTopografias [
+Topografia class >> mixtaCon: topografias [
 	"Instancia una Topografia mixta con una OrderedCollection de tamaño 4, con 4 topografias"
 
-	coleccionDeTopografias size = 4
+	topografias size = 4
 		ifFalse: [ self error: 'Una topografia mixta debe ser de 2x2 (4 elementos)' ].
-	^ TopografiaMixta new initialize: coleccionDeTopografias
+	^ TopografiaMixta new componentes: topografias
 ]
 
 { #category : #'instance creation' }
@@ -29,12 +29,12 @@ Topografia class >> tierra [
 ]
 
 { #category : #comparing }
-Topografia >> = aTopografia [
+Topografia >> = otraTopografia [
 	"Comprueba igualdad entre la topografia receptora y otra topografia, que esta dada por igual proporcion de tierra y agua, e igual distribucion"
 
-	^ self proporcionDeAgua = aTopografia proporcionDeAgua
-		& (self proporcionDeTierra = aTopografia proporcionDeTierra)
-		& (self distribucion = aTopografia distribucion)
+	^ self proporcionDeAgua = otraTopografia proporcionDeAgua
+		& (self proporcionDeTierra = otraTopografia proporcionDeTierra)
+		& (self distribucion = otraTopografia distribucion)
 ]
 
 { #category : #'private - accessing' }

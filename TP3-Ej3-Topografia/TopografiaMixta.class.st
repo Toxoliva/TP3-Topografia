@@ -5,14 +5,15 @@ Class {
 	#name : #TopografiaMixta,
 	#superclass : #Topografia,
 	#instVars : [
-		'topografia1',
-		'topografia2',
-		'topografia3',
-		'topografia4',
 		'componentes'
 	],
 	#category : #'TP3-Ej3-Topografia-Model'
 }
+
+{ #category : #initialization }
+TopografiaMixta >> componentes: topografias [
+	componentes := topografias
+]
 
 { #category : #'private - accessing' }
 TopografiaMixta >> distribucion [
@@ -25,11 +26,6 @@ TopografiaMixta >> distribucion [
 { #category : #initialization }
 TopografiaMixta >> initialize [
 	componentes := OrderedCollection ofSize: 4
-]
-
-{ #category : #initialization }
-TopografiaMixta >> initialize: coleccionDeTopografias [
-	componentes := coleccionDeTopografias
 ]
 
 { #category : #accesing }
