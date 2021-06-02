@@ -69,21 +69,32 @@ TopografiaTest >> testMixtaInitialization [
 ]
 
 { #category : #tests }
-TopografiaTest >> testProporcionDeAguaProporcionDeTierra [
+TopografiaTest >> testProporcionDeAgua [
 
 	self assert: ( unAgua proporcionDeAgua ) equals: (1).
-	self assert: ( unAgua proporcionDeTierra  ) equals: (0).
 	self assert: ( unaTierra proporcionDeAgua ) equals: (0).
-	self assert: ( unaTierra proporcionDeTierra ) equals: (1).
 	self assert: ( unaMixta proporcionDeAgua ) equals: (0.75).
-	self assert: ( unaMixta proporcionDeTierra ) equals: (0.25).
 	
 	unaMixta := Topografia mixtaCon: {unAgua. unAgua. unaTierra. unaMixta}.
 	
 	self assert: ( unaMixta proporcionDeAgua ) equals: (0.6875).
-	self assert: ( unaMixta proporcionDeTierra  ) equals: (0.3125).
 	
 	self assert: (mixtaCompleja proporcionDeAgua ) equals: (mixtaComplejaIgualProporcion proporcionDeAgua).
+	
+	
+]
+
+{ #category : #tests }
+TopografiaTest >> testProporcionDeTierra [
+
+	self assert: ( unAgua proporcionDeTierra  ) equals: (0).
+	self assert: ( unaTierra proporcionDeTierra ) equals: (1).
+	self assert: ( unaMixta proporcionDeTierra ) equals: (0.25).
+	
+	unaMixta := Topografia mixtaCon: {unAgua. unAgua. unaTierra. unaMixta}.
+	
+	self assert: ( unaMixta proporcionDeTierra  ) equals: (0.3125).
+	
 	self deny: (mixtaCompleja proporcionDeTierra) equals: (mixtaComplejaDiferente proporcionDeTierra).
 	
 	
