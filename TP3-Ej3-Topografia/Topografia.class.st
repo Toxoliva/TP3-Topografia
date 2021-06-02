@@ -19,7 +19,7 @@ Topografia class >> mixtaCon: topografias [
 	"Instancia una Topografia mixta con una OrderedCollection de tamaño 4, con 4 topografias"
 
 	topografias size = 4
-		ifFalse: [ self error: 'Una topografia mixta debe ser de 2x2 (4 elementos)' ].
+		ifFalse: [ Error signal: 'Una topografia mixta debe ser de 2x2 (4 elementos)' ].
 	^ TopografiaMixta new componentes: topografias
 ]
 

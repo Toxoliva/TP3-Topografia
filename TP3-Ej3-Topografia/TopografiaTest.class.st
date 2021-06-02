@@ -4,7 +4,11 @@ Class {
 	#instVars : [
 		'unaTierra',
 		'unAgua',
-		'unaMixta'
+		'unaMixta',
+		'unaMixta2',
+		'mixtaCompleja',
+		'mixtaComplejaIgualProporcion',
+		'mixtaComplejaDiferente'
 	],
 	#category : #'TP3-Ej3-Topografia-Tests'
 }
@@ -17,11 +21,25 @@ TopografiaTest >> setUp [
 	unaTierra := Topografia tierra.
 	
 	unaMixta := Topografia mixtaCon: { unAgua. unAgua. unAgua. unaTierra }.
+	unaMixta2 := Topografia mixtaCon: { unAgua. unaMixta. unAgua. unaTierra }.
+	
+	mixtaCompleja := Topografia mixtaCon: { unaMixta2. unaMixta. unaTierra. unAgua }.
+	mixtaComplejaIgualProporcion := Topografia mixtaCon: { unaMixta2. unaTierra. unAgua. unaMixta }.
+	mixtaComplejaDiferente := Topografia mixtaCon: { unaMixta2. unAgua. unAgua. unaMixta }.
+]
+
+{ #category : #tests }
+TopografiaTest >> testDistribucion [
+	self assert: unAgua distribucion equals: '1'.
+	self assert: unaTierra distribucion equals: '0'.
+	self assert: unaMixta distribucion equals: '{ 1 1 1 0 }'.
+	self assert: mixtaCompleja distribucion equals: '{ { 1 { 1 1 1 0 } 1 0 } { 1 1 1 0 } 0 1 }'.
 ]
 
 { #category : #tests }
 TopografiaTest >> testEquality [ 
    | espejada1 espejada2 |
+
 	self assert: ( unAgua ) equals: ( Topografia agua ).
 	self assert: ( unaTierra ) equals: ( Topografia tierra ).
 	
@@ -35,7 +53,19 @@ TopografiaTest >> testEquality [
 	espejada2 := Topografia mixtaCon: { unAgua. unaTierra. unAgua. unaTierra }.
 	self deny: ( espejada1 ) equals: ( espejada2 ).
 	
+	self deny: (mixtaCompleja) equals: (mixtaComplejaIgualProporcion ).
+	self deny: (mixtaCompleja) equals: (mixtaComplejaDiferente ).
 	
+	
+	
+	
+]
+
+{ #category : #tests }
+TopografiaTest >> testMixtaInitialization [
+	"Se intenta crear una topografia mixta con 5 o 3 elementos"
+	self should: [Topografia mixtaCon: {unAgua. unaTierra. unaTierra. unaTierra. unaTierra}] raise: Error.
+	self should: [Topografia mixtaCon: {unAgua. unaTierra. unaTierra}] raise: Error.
 ]
 
 { #category : #tests }
@@ -51,7 +81,10 @@ TopografiaTest >> testProporcionDeAguaProporcionDeTierra [
 	unaMixta := Topografia mixtaCon: {unAgua. unAgua. unaTierra. unaMixta}.
 	
 	self assert: ( unaMixta proporcionDeAgua ) equals: (0.6875).
-	self assert: ( unaMixta proporcionDeTierra  ) equals: (0.3125)
+	self assert: ( unaMixta proporcionDeTierra  ) equals: (0.3125).
+	
+	self assert: (mixtaCompleja proporcionDeAgua ) equals: (mixtaComplejaIgualProporcion proporcionDeAgua).
+	self deny: (mixtaCompleja proporcionDeTierra) equals: (mixtaComplejaDiferente proporcionDeTierra).
 	
 	
 ]
